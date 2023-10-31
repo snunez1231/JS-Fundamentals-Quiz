@@ -40,7 +40,10 @@ var questions = [
 
 function setNextQuestion() {
     var currentQuestion = questions[QuestionIndex]
-    questionElement.textContent = currentQuestion.question
+    questionElement.innerHTML= currentQuestion.question;
+    // questionElement.textContent = currentQuestion.question
+    answers.innerHTML="";
+
     for (i = 0; i < currentQuestion.choices.length; i++) {
         var currentanswer = currentQuestion.choices[i]
         var questionbtn = document.createElement("button")
@@ -80,21 +83,6 @@ function saveScore() {
 }
 
 
-// questions[0] = {
-//     question: "Example 1",
-//     choices: ["Choice1", "Choice2"],
-//     answer: "Choice2"
-// }
-
-// question_paragraph.innerHTML = questions[0].question
-// let choices = questions[0].choices
-// let buttonDiv = document.createElement('div')
-// for (let i = 0; i < choices.length; i++) {
-//     let choices_button = document.createElement('button')
-//     choices_button.innerHTML = choices[i]
-//     buttonDiv.append(choices_button)
-// }
-
 
 function startQuiz() {
     quizcontainer.classList.toggle("hidden")
@@ -103,26 +91,20 @@ function startQuiz() {
 }
 
 function endQuiz() {
-    // You can implement the logic for ending the quiz here
-    // For example, displaying the score or saving it
+
     resultContainer.textContent = "Your Score: " + score;
     questionsContainer.classList.add("hidden");
     resultContainer.classList.remove("hidden");
 }
 
-
+startButton.addEventListener('click', startQuiz);
 
 // function startQuiz() {
 //     document.getElementById('quiz-container')
 //     let question_paragraph= document.createElement('p')
 //     var display = 0;
-// document.getElementById('question-container').append(question_paragraph, buttonDiv) 
+// document.getElementById('question-container').append(question_paragraph, buttonDiv)
 
-
-
-
-
-startButton.addEventListener('click', startQuiz);
 // submitButton.addEventListener('click', saveScore);
 
 //objects and arrays
@@ -142,3 +124,18 @@ startButton.addEventListener('click', startQuiz);
 //     }
 // ]
 
+
+// questions[0] = {
+//     question: "Example 1",
+//     choices: ["Choice1", "Choice2"],
+//     answer: "Choice2"
+// }
+
+// question_paragraph.innerHTML = questions[0].question
+// let choices = questions[0].choices
+// let buttonDiv = document.createElement('div')
+// for (let i = 0; i < choices.length; i++) {
+//     let choices_button = document.createElement('button')
+//     choices_button.innerHTML = choices[i]
+//     buttonDiv.append(choices_button)
+// }
