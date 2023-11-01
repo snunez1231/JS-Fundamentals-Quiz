@@ -10,7 +10,6 @@ var QuestionIndex = 0;
 var score = 0;
 var timeLeft = 70;
 var timeInterval;
-
 var questions = [
     
     {
@@ -86,7 +85,7 @@ function startTimer() {
         console.log("Time left: " + timeLeft + " seconds");
 
         if (timeLeft <= 0) {
-            clearInterval(timerInterval);
+            clearInterval(timeInterval);
             endQuiz();
         }
     }, 1000); 
