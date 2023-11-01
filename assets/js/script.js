@@ -8,7 +8,8 @@ var quizcontainer = document.getElementById('quiz-container')
 
 var QuestionIndex = 0;
 var score = 0;
-// var timeLeft = 60;
+var timeLeft = 70;
+var timeInterval;
 
 var questions = [
     
@@ -59,9 +60,12 @@ function checkAnswer(event) {
     console.log(event.target)
     var selectedAnswer = event.target.textContent;
     var currentQuestion = questions[QuestionIndex];
-
+    var feedbackElement= document.createElement("p")
     if (selectedAnswer === currentQuestion.answer) {
         score++;
+        feedbackElement.textContent="Correct!";
+    } else{
+        feedbackElement.textContent="Wrong!"
     }
 
     QuestionIndex++;
@@ -71,30 +75,48 @@ function checkAnswer(event) {
     } else {
         endQuiz();
     }
+
+    answers.append(feedbackElement);
 }
     
 
 function startTimer() {
+    timeInterval = setInterval(function (){
+        timeLeft--;
+        console.log("Time left: " + timeLeft + " seconds");
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            endQuiz();
+        }
+    }, 1000); 
+
+    }
+
+
+function highscore() {
 
 }
 
-function saveScore() {
+function initials(){
 
 }
-
 
 
 function startQuiz() {
     quizcontainer.classList.toggle("hidden")
     questionsContainer.classList.toggle("hidden")
-    setNextQuestion()
+    setNextQuestion();
+    startTimer();
 }
 
 function endQuiz() {
-
+    clearInterval(timeInterval);
     resultContainer.textContent = "Your Score: " + score;
     questionsContainer.classList.add("hidden");
     resultContainer.classList.remove("hidden");
+    highscore();
+    initials();
 }
 
 startButton.addEventListener('click', startQuiz);
