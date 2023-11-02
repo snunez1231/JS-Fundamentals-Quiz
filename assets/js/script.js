@@ -4,11 +4,12 @@ var resultContainer = document.querySelector('#result-container')
 var questionElement = document.querySelector('#questions')
 var answers = document.querySelector('#answers-container')
 var submitButton = document.querySelector('#submit-btn')
-var quizcontainer = document.getElementById('quiz-container')
+var quizcontainer = document.querySelector('#quiz-container')
+var timerElement = document.getElementById('timer');
 
 var QuestionIndex = 0;
 var score = 0;
-var timeLeft = 70;
+var timeLeft = 30;
 var timeInterval;
 var questions = [
     
@@ -83,6 +84,8 @@ function startTimer() {
     timeInterval = setInterval(function (){
         timeLeft--;
         console.log("Time left: " + timeLeft + " seconds");
+        timerElement.textContent = timeLeft; 
+
 
         if (timeLeft <= 0) {
             clearInterval(timeInterval);
