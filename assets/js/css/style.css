@@ -23,19 +23,6 @@ body {
     height: 500px;
   }
   
-  #question-container {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  #questions {
-    font-size: 24px;
-  }
-  
-  #answers-container {
-    margin-top: 10px;
-  }
-  
   button {
     background-color: #3498db;
     color: #fff;
